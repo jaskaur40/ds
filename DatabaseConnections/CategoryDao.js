@@ -1,16 +1,19 @@
 var mongoose = require('mongoose');
-//var db = mongoose.connect("mongodb://localhost:27017/nodetest2");
 
-	var CategorySchema = new mongoose.Schema({
-		categoryId:Number,
-		categoryName:String
-	    
-	});
-	var CategoryModel = mongoose.model( 'Category', CategorySchema );
+var dbConnection = require('./DBConnection');
+
+var db = dbConnection.createConnection;
+
+var CategorySchema = new mongoose.Schema({
+	categoryId:Number,
+	categoryName:String
+});
+
+	var CategoryModel = db.model( 'Category', CategorySchema);
 
 
 	function CategoryDao() {
-	
+
 	}
 	
 	CategoryDao.prototype.createCategory = function(callback, categoryName){
@@ -52,7 +55,7 @@ var mongoose = require('mongoose');
 	CategoryDao.prototype.viewCategories = function(callback){
 		
 		
-		CategoryModel.find(function( err, Category ) {
+		CategoryModel.find({},function( err, Category ) {
 			callback(err, Category);
 	    });
 

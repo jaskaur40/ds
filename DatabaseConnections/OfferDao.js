@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
-//var autoIncrement = require('mongoose-auto-increment');
-//var db = mongoose.connect("mongodb://localhost:27017/nodetest2");
-//var autoIncrement = require('mongoose-auto-increment');
-//autoIncrement.initialize(db);
+var dbConnection = require('./DBConnection');
+
+var db = dbConnection.createConnection;
+
+
 var ProductDao = require("../DatabaseConnections/ProductDao");
 var uuid = require('node-uuid');
 //var cmt = require("../DatabaseConnections/CommentDao");

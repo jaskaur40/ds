@@ -1,5 +1,8 @@
 var mongoose = require('mongoose');
-//var db = mongoose.connect("mongodb://localhost:27017/nodetest2");
+var dbConnection = require('./DBConnection');
+
+var db = dbConnection.createConnection;
+
 
 	var ProductSchema = new mongoose.Schema({
 		productId:Number,

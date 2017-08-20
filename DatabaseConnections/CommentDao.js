@@ -1,14 +1,18 @@
 var mongoose = require('mongoose');
+var dbConnection = require('./DBConnection');
+
+var db = dbConnection.createConnection;
+
 var offer = require('../DatabaseConnections/OfferDao');
 var uuid = require('node-uuid');
 //var cmt = require("../DatabaseConnections/CommentDao");
 //var db = mongoose.connect("mongodb://localhost:27017/nodetest2");
 
-/*var CommentSchema = new mongoose.Schema({
+var CommentSchema = new mongoose.Schema({
 	CommentId : Number,
 	Comment : String,
 	userId : Number
-});*/
+});
 
 var CommentModel = mongoose.model('Comment', offer.CommentSchema);
 var OfferModel = mongoose.model('Offer', offer.OfferSchema);
