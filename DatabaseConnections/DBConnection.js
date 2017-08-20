@@ -16,3 +16,45 @@ exports.createConnection = mongoose.createConnection(uri,{
   useMongoClient: true,
   /* other options */
 });
+
+exports.UserSchema = new mongoose.Schema({
+    userId: String,
+    emailId: String,
+    fname: String,
+    lname: String,
+    mobileNum: Number
+});
+
+var CommentSchema = new mongoose.Schema({
+	CommentId : String,
+	Comment : String,
+	userId : String
+	});
+exports.CommentSchema = CommentSchema;
+
+exports.OfferSchema = new mongoose.Schema({
+	offerId: String,
+	buyingQty: Number,
+	offeredDetails: String,
+	buyerStatus: String,
+	sellerStatus: String,
+	offerExpiry: Date,
+	productId: Number,
+	buyerId: Number,
+	Comment: [CommentSchema],
+	lastModified: Date
+});
+
+exports.ProductSchema = new mongoose.Schema({
+		productId:Number,
+		productName:String,
+		quantity:Number,
+		userId:String,
+		expectedOffer:String,
+		productDesc:String,
+		prodExpDate:Date,
+		isValid:Number,
+		categoryId:Number,
+		lastUpdated:Date
+	    
+	});

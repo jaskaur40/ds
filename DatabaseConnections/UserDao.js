@@ -1,24 +1,12 @@
-var mongoose = require('mongoose');
-
 var dbConnection = require('./DBConnection');
 
 var db = dbConnection.createConnection;
 
 var uuid = require('node-uuid');
-var UserSchema = new mongoose.Schema({
-    userId: String,
-    emailId: String,
-    fname: String,
-    lname: String,
-    mobileNum: Number
-});
-var UserModel = mongoose.model('User', UserSchema, function(err){
-    if(err){
-        console.log(err);
-    } else {
-        console.log('connected to the database successfuly.');
-    }
-});
+
+var UserSchema = dbConnection.UserSchema;
+
+var UserModel = db.model('User', UserSchema);
 
 
 function UserDao() {

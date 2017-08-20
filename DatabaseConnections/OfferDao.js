@@ -1,32 +1,14 @@
-var mongoose = require('mongoose');
 var dbConnection = require('./DBConnection');
-
 var db = dbConnection.createConnection;
-
-
 var ProductDao = require("../DatabaseConnections/ProductDao");
 var uuid = require('node-uuid');
 //var cmt = require("../DatabaseConnections/CommentDao");
-var CommentSchema = new mongoose.Schema({
-	CommentId : String,
-	Comment : String,
-	userId : String
-	});
-var CommentModel = mongoose.model( 'Comment', CommentSchema );
-var OfferSchema = new mongoose.Schema({
-	offerId: String,
-	buyingQty: Number,
-	offeredDetails: String,
-	buyerStatus: String,
-	sellerStatus: String,
-	offerExpiry: Date,
-	productId: Number,
-	buyerId: Number,
-	Comment: [CommentSchema],
-	lastModified: Date
-});
+var CommentSchema = dbConnection.CommentSchema;
+
+var CommentModel = db.model( 'Comment', CommentSchema );
+var OfferSchema = dbConnection.OfferSchema;
 //OfferSchema.plugin(autoIncrement.plugin, { model: 'Offer', field:'_id' , startAt: 2, increment: 2});
-var OfferModel = mongoose.model( 'Offer', OfferSchema );
+var OfferModel = db.model( 'Offer', OfferSchema );
 
 function OfferDao() {
 }

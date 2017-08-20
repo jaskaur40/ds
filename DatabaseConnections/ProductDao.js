@@ -1,23 +1,8 @@
-var mongoose = require('mongoose');
 var dbConnection = require('./DBConnection');
 
 var db = dbConnection.createConnection;
-
-
-	var ProductSchema = new mongoose.Schema({
-		productId:Number,
-		productName:String,
-		quantity:Number,
-		userId:String,
-		expectedOffer:String,
-		productDesc:String,
-		prodExpDate:Date,
-		isValid:Number,
-		categoryId:Number,
-		lastUpdated:Date
-	    
-	});
-	var ProductModel = mongoose.model( 'Product', ProductSchema );
+var ProductSchema = dbConnection.ProductSchema;
+var ProductModel = db.model( 'Product', ProductSchema );
 
 
 

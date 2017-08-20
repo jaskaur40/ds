@@ -10,7 +10,7 @@ function Category() {
 Category.prototype.createCategory = function(callback,request)
 {
 	
-	console.log("create category function ");
+	console.log(request);
 	categoryobj.createCategory(function(err,res) {
 		callback(err,res);
 		
