@@ -135,7 +135,7 @@ exports.createProduct =function(req,res){
 			res.json(result);
 		}
 
-	},req.body,req.params.categoryId);
+	},req.body,req.params.categoryId); // req.params is the value passed using : from the post request made in server.js
 
 };
 
